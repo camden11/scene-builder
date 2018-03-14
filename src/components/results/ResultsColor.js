@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import sentimentToColor from "../../utils/sentimentToColor";
 import { GridParent } from "../../style";
 
 const ColorBlock = styled.div`
   grid-row: span 12;
   grid-column: span 1;
-  background-color: black;
+  transition: background-color 1s;
+  background-color: ${props => props.color};
 `;
 
 class ResultsColor extends Component {
   render() {
-    return <ColorBlock />;
+    const { results } = this.props;
+    return <ColorBlock color={sentimentToColor(results)} />;
   }
 }
 

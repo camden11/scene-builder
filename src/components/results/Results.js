@@ -16,7 +16,7 @@ class Results extends Component {
     return (
       <ResultsContainer>
         <GridParent>
-          <ResultsColor />
+          <ResultsColor results={results} />
           <ResultsData results={results} />
         </GridParent>
       </ResultsContainer>
