@@ -1,10 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { setColors } from "../actions/ColorsActions";
+import sentimentToColor from "../utils/sentimentToColor";
 
 class Illustration extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lastUpdatedSection: -1
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { results, setColors } = nextProps;
+    const { lastUpdatedSection } = this.state;
+    const sectionIndex = results.length - 1;
+    if (sectionIndex > lastUpdatedSection) {
+      setColors(sectionIndex, sentimentToColor(results[sectionIndex]));
+      this.setState({ lastUpdatedSection: lastUpdatedSection + 1 });
+    }
+  }
+
   render() {
     const { colors } = this.props;
-    console.log(colors);
     return (
       <svg width="100%" length="auto" viewBox="0 0 1368 730" version="1.1">
         <title>scene</title>
@@ -568,6 +587,12 @@ class Illustration extends Component {
   }
 }
 
-const mapStateToProps = state => ({ colors: state.colors });
+const mapStateToProps = state => ({
+  colors: state.colors,
+  results: state.indico.results
+});
 
-export default connect(mapStateToProps)(Illustration);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setColors }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Illustration);

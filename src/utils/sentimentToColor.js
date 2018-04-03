@@ -38,7 +38,7 @@ const caculateSaturation = emotions => {
       first = emotion;
     }
   }
-  return `${Math.ceil(emotions[first] * 100)}%`;
+  return Math.ceil(emotions[first] * 100);
 };
 
 export default results => {
@@ -47,9 +47,9 @@ export default results => {
   const love = Math.min(100, relationships + romance);
   const hue = calculateHue({ anger, joy, sadness, love });
   const saturation = caculateSaturation({ anger, joy, sadness, love });
-  const lightness = `${20 + Math.ceil(results.sentiment * 40)}%`;
-  const alpha = 1 - fear;
-  return `hsla(${hue}, ${saturation}, ${lightness}, ${alpha})`;
+  const lightness = 20 + Math.ceil(results.sentiment * 40);
+  const alpha = 1 - 0.25 * fear;
+  return { hue, saturation, lightness, alpha };
 };
 
 // export default results => {

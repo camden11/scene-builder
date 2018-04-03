@@ -1,4 +1,5 @@
 import ActionTypes from "../actions/ActionTypes";
+import calculateColors from "../utils/calculateColors";
 
 const initialState = {
   walls: {
@@ -56,5 +57,23 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  return initialState;
+  switch (action.type) {
+    case ActionTypes.SET_WALLS_COLOR:
+      return {
+        ...state,
+        walls: calculateColors.walls(action.payload.baseColor)
+      };
+    case ActionTypes.SET_RUG_COLOR:
+      return {
+        ...state,
+        rug: calculateColors.rug(action.payload.baseColor)
+      };
+    case ActionTypes.SET_WINDOW_COLOR:
+      return {
+        ...state,
+        window: calculateColors.windowAndLight(action.payload.baseColor)
+      };
+    default:
+      return state;
+  }
 };
