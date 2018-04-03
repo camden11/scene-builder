@@ -4,7 +4,7 @@ import questions from "../data/questions";
 import { H3 } from "../style";
 
 const QuestionContainer = styled.div`
-  grid-row: span 2;
+  grid-row: span 4;
   grid-column: span 2;
 `;
 

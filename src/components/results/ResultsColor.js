@@ -5,7 +5,7 @@ import { GridParent } from "../../style";
 
 const ColorBlock = styled.div`
   grid-row: span 12;
-  grid-column: span 1;
+  grid-column: span 2;
   transition: background-color 1s;
   background-color: ${props => props.color};
 `;

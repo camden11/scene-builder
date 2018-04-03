@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { GridParent } from "../../style";
 import ResultsColor from "./ResultsColor";
 import ResultsData from "./ResultsData";
+import emptyResults from "../../data/emptyResults";
 
 const ResultsContainer = styled.div`
   grid-row: span 5;
@@ -13,11 +14,12 @@ const ResultsContainer = styled.div`
 class Results extends Component {
   render() {
     const { results } = this.props;
+    const currentResults =
+      results.length > 0 ? results[results.length - 1] : emptyResults;
     return (
       <ResultsContainer>
         <GridParent>
-          <ResultsColor results={results} />
-          <ResultsData results={results} />
+          <ResultsColor results={currentResults} />
         </GridParent>
       </ResultsContainer>
     );

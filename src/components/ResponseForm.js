@@ -7,7 +7,7 @@ import Question from "./Question";
 import { GridParent } from "../style";
 
 const ResponseFormContainer = styled.div`
-  grid-row: span 7;
+  grid-row: span 9;
   grid-column: span 2;
 `;
 
@@ -15,12 +15,12 @@ const TextArea = styled.textarea`
   font-family: "Work Sans";
   width: 100%;
   resize: none;
-  font-size: 20px;
+  font-size: 14px;
   border: none;
   &:focus {
     outline: none;
   }
-  grid-row: span 8;
+  grid-row: span 7;
   grid-column: span 2;
 `;
 
@@ -35,7 +35,7 @@ const Button = styled.button`
   &:focus {
     outline: none;
   }
-  grid-row: 11;
+  grid-row: 12;
   grid-column: span 1;
 `;
 
@@ -57,9 +57,10 @@ class ResponseForm extends Component {
   }
 
   handleSubmit() {
-    const { text, currentQuestion, results } = this.state;
+    const { text, currentQuestion } = this.state;
     const { analyzeResponse } = this.props;
     analyzeResponse(text);
+    this.setState({ currentQuestion: currentQuestion + 1, text: "" });
   }
 
   render() {
@@ -75,7 +76,6 @@ class ResponseForm extends Component {
           />
           <br />
           <Button onClick={() => this.handleSubmit()}>Submit</Button>
-          <Button onClick={() => this.setState({ text: "" })}>Clear</Button>
         </GridParent>
       </ResponseFormContainer>
     );
