@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import questions from "../data/questions";
 import { H3 } from "../style";
@@ -17,4 +18,8 @@ const Question = props => {
   );
 };
 
-export default Question;
+const mapStateToProps = state => ({
+  currentQuestion: state.questions.currentQuestion
+});
+
+export default connect(mapStateToProps)(Question);

@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { analyzeResponse } from "../actions/IndicoActions";
+import { incrementCurrentQuestion } from "../actions/QuestionsActions";
 import styled from "styled-components";
 import Question from "./Question";
 import { GridParent } from "../style";
 
 const ResponseFormContainer = styled.div`
-  grid-row: span 9;
+  grid-row: span 6;
   grid-column: span 2;
 `;
 
@@ -43,8 +44,7 @@ class ResponseForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "",
-      currentQuestion: 0
+      text: ""
     };
   }
 
@@ -57,10 +57,10 @@ class ResponseForm extends Component {
   }
 
   handleSubmit() {
-    const { text, currentQuestion } = this.state;
-    const { analyzeResponse } = this.props;
+    const { text } = this.state;
+    const { analyzeResponse, incrementCurrentQuestion } = this.props;
     analyzeResponse(text);
-    this.setState({ currentQuestion: currentQuestion + 1, text: "" });
+    incrementCurrentQuestion();
   }
 
   render() {
@@ -68,7 +68,7 @@ class ResponseForm extends Component {
     return (
       <ResponseFormContainer>
         <GridParent>
-          <Question currentQuestion={currentQuestion} />
+          <Question />
           <TextArea
             value={text}
             onChange={e => this.handleType(e)}
@@ -83,6 +83,6 @@ class ResponseForm extends Component {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ analyzeResponse }, dispatch);
+  bindActionCreators({ analyzeResponse, incrementCurrentQuestion }, dispatch);
 
 export default connect(null, mapDispatchToProps)(ResponseForm);

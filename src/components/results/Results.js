@@ -4,10 +4,11 @@ import styled from "styled-components";
 import { GridParent } from "../../style";
 import ResultsColor from "./ResultsColor";
 import ResultsData from "./ResultsData";
+import Illustration from "../Illustration";
 import emptyResults from "../../data/emptyResults";
 
 const ResultsContainer = styled.div`
-  grid-row: span 5;
+  grid-row: span 6;
   grid-column: span 2;
 `;
 
@@ -18,9 +19,7 @@ class Results extends Component {
       results.length > 0 ? results[results.length - 1] : emptyResults;
     return (
       <ResultsContainer>
-        <GridParent>
-          <ResultsColor results={currentResults} />
-        </GridParent>
+        <Illustration />
       </ResultsContainer>
     );
   }
