@@ -73,6 +73,26 @@ export default (state = initialState, action) => {
         ...state,
         window: calculateColors.windowAndLight(action.payload.baseColor)
       };
+    case ActionTypes.SET_DRESSER_COLOR:
+      return {
+        ...state,
+        dresser: calculateColors.dresser(action.payload.baseColor)
+      };
+    case ActionTypes.SET_TABLE_COLOR:
+      return {
+        ...state,
+        table: calculateColors.table(action.payload.baseColor)
+      };
+    case ActionTypes.SET_DECORATIONS_COLOR:
+      return {
+        ...state,
+        decorations: calculateColors.decorations(action.payload.baseColor)
+      };
+    case ActionTypes.SET_BED_COLOR:
+      return {
+        ...state,
+        bed: calculateColors.bed(action.payload.baseColor)
+      };
     default:
       return state;
   }

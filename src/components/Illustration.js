@@ -115,11 +115,6 @@ class Illustration extends Component {
                 fill={colors.window.shadowDark}
                 points="281 129 522.657185 129 536.160151 178.279899 281 178.279899"
               />
-              <path
-                d="M118.5,0.446740632 L512.897974,0.446740632 L512.897974,15 C512.897974,22.1797017 507.077676,28 499.897974,28 L131.5,28 C124.320298,28 118.5,22.1797017 118.5,15 L118.5,0.446740632 Z"
-                id="floorLight-bed-shadow"
-                fill={colors.bed.bedShadowLight}
-              />
             </g>
             <polyline
               id="wall-back"
@@ -212,7 +207,7 @@ class Illustration extends Component {
               <path
                 d="M21,244 L25.5582977,271 C29.5278519,271 32.4666984,271 34.3748372,271 C36.282976,271 38.7930406,271 41.9050308,271 L47,244 L21,244 Z"
                 id="bed-leg-left"
-                fill={colors.bed.begLegs}
+                fill={colors.bed.bedLegs}
                 fillRule="nonzero"
               />
               <g
