@@ -93,6 +93,8 @@ export default (state = initialState, action) => {
         ...state,
         bed: calculateColors.bed(action.payload.baseColor)
       };
+    case ActionTypes.RESET_ALL:
+      return initialState;
     default:
       return state;
   }

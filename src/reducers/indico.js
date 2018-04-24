@@ -17,7 +17,10 @@ export default (state = initialState, action) => {
     case ActionTypes.INDICO_ANALYZE_SUCCESS:
       const results = buildResults(action.payload.results);
       return {
-        results: state.results.concat([results]),
+        results: state.results.concat({
+          data: results,
+          response: action.payload.text
+        }),
         status: RequestStatus.SUCCESS
       };
     case ActionTypes.INDICO_ANALYZE_ERROR:
@@ -25,6 +28,8 @@ export default (state = initialState, action) => {
         ...state,
         status: RequestStatus.FAILURE
       };
+    case ActionTypes.RESET_ALL:
+      return initialState;
     default:
       return state;
   }

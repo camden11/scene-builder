@@ -10,6 +10,8 @@ export default (state = initialState, action) => {
       return {
         section: state.section + 1
       };
+    case ActionTypes.RESET_ALL:
+      return initialState;
     default:
       return state;
   }

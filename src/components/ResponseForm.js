@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Question from "./Question";
 import Button from "./Button";
 import { GridParent } from "../style";
+import questions from "../data/questions";
 
 const ResponseFormContainer = styled.div`
   position: absolute;
@@ -75,7 +76,15 @@ class ResponseForm extends Component {
 
   handleSubmit() {
     const { text } = this.state;
-    const { analyzeResponse, incrementCurrentQuestion } = this.props;
+    const {
+      analyzeResponse,
+      incrementCurrentQuestion,
+      currentQuestion,
+      nextSection
+    } = this.props;
+    if (currentQuestion === questions.length - 1) {
+      nextSection();
+    }
     analyzeResponse(text);
     this.setState({ text: "" });
     incrementCurrentQuestion();
@@ -107,7 +116,11 @@ class ResponseForm extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  currentQuestion: state.questions.currentQuestion
+});
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ analyzeResponse, incrementCurrentQuestion }, dispatch);
 
-export default connect(null, mapDispatchToProps)(ResponseForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ResponseForm);

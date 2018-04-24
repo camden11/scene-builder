@@ -17,11 +17,11 @@ body {
   height: 100%;
 }
 
-g,
+/* g,
 polygon,
 path,
 polyline,
 rect,
 circle {
   transition: fill 10s, stroke 10s;
-}
+} */

@@ -5,3 +5,9 @@ export const incrementCurrentSection = () => {
     type: ActionTypes.INCREMENT_CURRENT_SECTION
   };
 };
+
+export const reset = () => {
+  return {
+    type: ActionTypes.RESET_ALL
+  };
+};

@@ -4,8 +4,9 @@ import { bindActionCreators } from "redux";
 import { incrementCurrentSection } from "../actions/ProgressActions";
 import Intro from "./Intro";
 import Main from "./Main";
+import EndResults from "./EndResults";
 
-const SECTION_ORDER = [Intro, Main];
+const SECTION_ORDER = [Intro, Main, EndResults];
 
 class CurrentSection extends Component {
   render() {

@@ -4,10 +4,11 @@ import ResponseForm from "./ResponseForm";
 
 class Main extends Component {
   render() {
+    const { nextSection } = this.props;
     return (
       <div>
         <Illustration />
-        <ResponseForm />
+        <ResponseForm nextSection={nextSection} />
       </div>
     );
   }
