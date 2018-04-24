@@ -12,3 +12,16 @@ body {
 #root {
   height: 100%;
 }
+
+.App {
+  height: 100%;
+}
+
+g,
+polygon,
+path,
+polyline,
+rect,
+circle {
+  transition: fill 10s, stroke 10s;
+}

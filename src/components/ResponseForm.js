@@ -5,40 +5,56 @@ import { analyzeResponse } from "../actions/IndicoActions";
 import { incrementCurrentQuestion } from "../actions/QuestionsActions";
 import styled from "styled-components";
 import Question from "./Question";
+import Button from "./Button";
 import { GridParent } from "../style";
 
 const ResponseFormContainer = styled.div`
-  grid-row: span 6;
-  grid-column: span 2;
+  position: absolute;
+  width: 50%;
+  min-width: 480px;
+  height: 220px;
+  bottom: 20px;
+  left: 20px;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 30px;
+  opacity: 0.15;
+  &:hover {
+    opacity: 0.9;
+  }
+  transition: opacity 0.5s;
+`;
+
+const Subcontainer = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const TextArea = styled.textarea`
-  font-family: "Work Sans";
+  font-family: "Roboto Mono";
+  font-weight: 400;
+  font-size: 16px;
+  color: #808080;
   width: 100%;
   resize: none;
-  font-size: 14px;
   border: none;
+  height: 100px;
+  margin-bottom: 20px;
   &:focus {
     outline: none;
   }
-  grid-row: span 7;
-  grid-column: span 2;
+
+  @media (max-width: 1190px) {
+    height: 80px;
+  }
 `;
 
-const Button = styled.button`
-  width: 150px;
-  height: 50px;
-  text-align: center;
-  background-color: black;
-  color: white;
-  font-size: 20px;
-  font-family: "Work Sans";
-  &:focus {
-    outline: none;
-  }
-  grid-row: 12;
-  grid-column: span 1;
-`;
+const buttonStyle = {
+  position: "absolute",
+  bottom: 40
+};
 
 class ResponseForm extends Component {
   constructor(props) {
@@ -53,13 +69,15 @@ class ResponseForm extends Component {
   }
 
   handleType(event) {
-    this.setState({ text: event.target.value });
+    const value = event.target.value;
+    this.setState({ text: value.substring(3, value.length) });
   }
 
   handleSubmit() {
     const { text } = this.state;
     const { analyzeResponse, incrementCurrentQuestion } = this.props;
     analyzeResponse(text);
+    this.setState({ text: "" });
     incrementCurrentQuestion();
   }
 
@@ -67,16 +85,23 @@ class ResponseForm extends Component {
     const { text, results, currentQuestion } = this.state;
     return (
       <ResponseFormContainer>
-        <GridParent>
+        <Subcontainer>
           <Question />
           <TextArea
-            value={text}
+            value={`A: ${text}`}
             onChange={e => this.handleType(e)}
             id="text-area"
           />
           <br />
-          <Button onClick={() => this.handleSubmit()}>Submit</Button>
-        </GridParent>
+          <Button
+            right
+            style={buttonStyle}
+            disabled={!text.trim()}
+            onClick={() => this.handleSubmit()}
+          >
+            Submit
+          </Button>
+        </Subcontainer>
       </ResponseFormContainer>
     );
   }

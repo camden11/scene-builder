@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { GridParent } from "../../style";
-import ResultsColor from "./ResultsColor";
-import ResultsData from "./ResultsData";
-import Illustration from "../Illustration";
-import emptyResults from "../../data/emptyResults";
+import { GridParent } from "../style";
+import Illustration from "./Illustration";
+import emptyResults from "../data/emptyResults";
 
 const ResultsContainer = styled.div`
-  grid-row: span 6;
-  grid-column: span 2;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 `;
 
 class Results extends Component {

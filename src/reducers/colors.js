@@ -3,9 +3,9 @@ import calculateColors from "../utils/calculateColors";
 
 const initialState = {
   walls: {
-    wallSide: "hsla(0,0%,0%,1)",
-    wallBack: "hsla(0,0%,0%,1)",
-    floor: "hsla(0,0%,0%,1)"
+    wallSide: "hsla(273,100%,98%,1)",
+    wallBack: "hsla(273,100%,98%,1)",
+    floor: "hsla(273,100%,98%,1)"
   },
   rug: {
     rug: "hsla(0,0%,0%,0)",
@@ -21,7 +21,7 @@ const initialState = {
     front: "hsla(0,0%,0%,0)",
     topBorder: "hsla(0,0%,0%,0)",
     drawer: "hsla(0,0%,0%,0)",
-    knob: "000000"
+    knob: "hsla(0,0%,0%,0)"
   },
   table: {
     tableFront: "hsla(0,0%,0%,0)",

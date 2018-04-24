@@ -1,6 +1,7 @@
 import { key } from "../config";
 
 const formatResponse = response => {
+  console.log(response);
   return response.json().then(data => {
     return { data: data.results, status: response.status };
   });
